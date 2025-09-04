@@ -124,7 +124,7 @@ function addTask() {
   taskList.appendChild(taskItem);
   taskInput.value = '';
   dueDateInput.value = '';
-  addTaskButton.disabled = false;
+  addTaskButton.enabled= true;
   saveTasks();
 
   taskItem.addEventListener('click', (event) => {
