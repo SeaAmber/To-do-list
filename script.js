@@ -11,7 +11,7 @@ const taskList = document.getElementById('taskList');
 
 
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', () => { 
   addTaskButton.addEventListener('click', addTask);
   window.addEventListener('load', loadTasks);
 
@@ -124,7 +124,7 @@ function addTask() {
   taskList.appendChild(taskItem);
   taskInput.value = '';
   dueDateInput.value = '';
-  addTaskButton.disabled = true;
+  addTaskButton.disabled = false;
   saveTasks();
 
   taskItem.addEventListener('click', (event) => {
