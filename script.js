@@ -170,8 +170,9 @@ function loadTasks() {
 
   const tasks = JSON.parse(saved);
 
+
   tasks.forEach((task) => {
-   
+   const taskItem = document.createElement('li');
 
     if (task.priority) {
       taskItem.classList.add(task.priority.toLowerCase());
@@ -196,11 +197,11 @@ function loadTasks() {
         taskItem.classList.add('selected');
 
       }
-    function unselect(taskItem) {
-      taskItem.classList.remove('selected');
-    }
+   
 
     });
+
+   
 
     const completeBtn = document.createElement('button');
     completeBtn.textContent = 'completed';
@@ -224,4 +225,6 @@ function loadTasks() {
 
 }
 
-
+  function unselect(taskItem) {
+      taskItem.classList.remove('selected');
+    }
