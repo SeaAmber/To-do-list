@@ -299,6 +299,11 @@ li:nth-child(odd) {
   border-left: 5px solid #33cc33;
 }
 
+li.selected {
+  background-color: #cce5ff;
+  border-left: 5px solid #007bff;
+}
+
 
 
 
