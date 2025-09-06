@@ -1,7 +1,7 @@
 //Add Comments:
 //1. Making priorities high,medium,low optional
-//2. Unselecting the tasks like when I click on it and  I can't unselect(I think that is causing 
-//when I type a task that starts with the letter do in the add task an alert comes up asking to 
+//2. Unselecting the tasks like when I click on it and  I can't unselect(I think that is causing
+//when I type a task that starts with the letter do in the add task an alert comes up asking to
 //confirm to delete the task)
 
 const taskInput = document.getElementById('taskInput');
@@ -9,9 +9,7 @@ const dueDateInput = document.getElementById('dueDateInput');
 const addTaskButton = document.getElementById('addTaskBtn');
 const taskList = document.getElementById('taskList');
 
-
-
-document.addEventListener('DOMContentLoaded', () => { 
+document.addEventListener('DOMContentLoaded', () => {
   addTaskButton.addEventListener('click', addTask);
   window.addEventListener('load', loadTasks);
 
@@ -32,7 +30,10 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
   document.addEventListener('keydown', (event) => {
-    if (event.target.tagName === 'INPUT' || event.target.tagName === 'TEXTAREA') {
+    if (
+      event.target.tagName === 'INPUT' ||
+      event.target.tagName === 'TEXTAREA'
+    ) {
       return;
     }
 
@@ -72,15 +73,11 @@ function createDeleteButton(taskItem) {
   return deleteBtn;
 }
 
-  
-  
-
-
 function addTask() {
   const taskText = taskInput.value.trim();
   const dueDate = dueDateInput.value;
-   const taskPriority = getPriority();
-  
+  const taskPriority = getPriority();
+
   if (taskText === '') {
     alert('Please enter a task name.');
     return;
@@ -94,11 +91,10 @@ function addTask() {
 
   const taskItem = document.createElement('li');
   const priority = getPriority();
-  
+
   if (priority) {
     taskItem.classList.add(priority.toLowerCase());
   }
-
 
   const span = document.createElement('span');
   span.textContent = displayText;
@@ -124,15 +120,17 @@ function addTask() {
   taskList.appendChild(taskItem);
   taskInput.value = '';
   dueDateInput.value = '';
-  addTaskButton.enabled= true;
+  addTaskButton.enabled = true;
   saveTasks();
 
   taskItem.addEventListener('click', (event) => {
-    if (event.target.tagName === 'BUTTON') {
+    if (event.target.classList.add('BUTTON')) {
       return;
     }
     const wasSelected = taskItem.classList.contains('selected');
-    document.querySelectorAll('li').forEach(li => li.classList.remove('selected'));
+    document
+      .querySelectorAll('li')
+      .forEach((li) => li.classList.remove('selected'));
     if (!wasSelected) {
       taskItem.classList.add('selected');
     }
@@ -156,9 +154,7 @@ function saveTasks() {
         : item.classList.contains('low')
         ? 'Low'
         : null,
-        
     });
-    
   });
 
   localStorage.setItem('todoTasks', JSON.stringify(tasks));
@@ -170,9 +166,8 @@ function loadTasks() {
 
   const tasks = JSON.parse(saved);
 
-
   tasks.forEach((task) => {
-   const taskItem = document.createElement('li');
+    const taskItem = document.createElement('li');
 
     if (task.priority) {
       taskItem.classList.add(task.priority.toLowerCase());
@@ -188,20 +183,17 @@ function loadTasks() {
     taskItem.appendChild(dateSpan);
 
     taskItem.addEventListener('click', (event) => {
-      if (event.target.tagName === 'BUTTON') {
+      if (event.target.classList.add('button')) {
         return;
       }
       const wasSelected = taskItem.classList.contains('selected');
-      document.querySelectorAll('li').forEach(li => li.classList.remove('selected'));
+      document
+        .querySelectorAll('li')
+        .forEach((li) => li.classList.remove('selected'));
       if (!wasSelected) {
         taskItem.classList.add('selected');
-
       }
-   
-
     });
-
-   
 
     const completeBtn = document.createElement('button');
     completeBtn.textContent = 'completed';
@@ -220,11 +212,8 @@ function loadTasks() {
 
     taskList.appendChild(taskItem);
   });
-  
-
-
 }
 
-  function unselect(taskItem) {
-      taskItem.classList.remove('selected');
-    }
+function unselect(taskItem) {
+  taskItem.classList.remove('selected');
+}
