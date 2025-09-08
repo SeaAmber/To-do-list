@@ -124,7 +124,7 @@ function addTask() {
   saveTasks();
 
   taskItem.addEventListener('click', (event) => {
-    if (event.target.classList.add('BUTTON')) {
+    if (event.target.tagName === 'BUTTON') {
       return;
     }
     const wasSelected = taskItem.classList.contains('selected');
@@ -183,7 +183,7 @@ function loadTasks() {
     taskItem.appendChild(dateSpan);
 
     taskItem.addEventListener('click', (event) => {
-      if (event.target.classList.add('button')) {
+      if (event.target.tagName === 'BUTTON') {
         return;
       }
       const wasSelected = taskItem.classList.contains('selected');
